@@ -1,0 +1,74 @@
+<tr>
+    <td>
+        <div class="d-flex align-items-center justify-content-between">
+            <span> mixing manager</span>
+            <div>
+            <a href="#" class="me-1 text-decoration-none edit-role" data-bs-toggle="modal" data-bs-target="#editRoleModal">
+                <iconify-icon icon="akar-icons:edit" style="color: black;" width="20"></iconify-icon>
+            </a>
+            <a href="#" class="pe-1 text-decoration-none delete-role" data-bs-toggle="modal" data-bs-target="#deleteRoleModal">
+                <iconify-icon icon="material-symbols:delete-outline" style="color: black;" width="20"></iconify-icon>
+            </a>
+            <iconify-icon icon="bi:chevron-down" style="color: black; cursor: pointer;" width="17" class="accordion-icon collapsed" data-bs-toggle="collapse" data-bs-target="#accordionContent" aria-expanded="false" aria-controls="accordionContent"></iconify-icon>
+            </div>
+        </div>
+        <div class="accordion-collapse collapse" id="accordionContent">
+            <div class="accordion-body">
+                <!-- accordian body -->
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <input type="checkbox" id="dashboardCheckbox" checked>
+                        <label for="dashboardCheckbox">Dashboard</label>
+                    </div>
+                    <div class="pe-5">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dashboardOptions" id="readOnlyDashboard" value="readOnly" checked>
+                            <label class="form-check-label" for="readOnlyDashboard">Read Only</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dashboardOptions" id="readWriteDashboard" value="readWrite">
+                            <label class="form-check-label" for="readWriteDashboard">Read Write</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <input type="checkbox" id="linesCheckbox" checked>
+                        <label for="linesCheckbox">Lines</label>
+                    </div>
+                    <div class="pe-5">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="linesOptions" id="readOnlyLines" value="readOnly" checked>
+                            <label class="form-check-label" for="readOnlyLines">Read Only</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="linesOptions" id="readWriteLines" value="readWrite">
+                            <label class="form-check-label" for="readWriteLines">Read Write</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- accordian body close -->
+        </div>
+    </td>
+</tr>
+
+
+
+
+<div>
+    <div class="rounded-3 me-2 px-3 py-2" style="background-color: #243A85CC; color: white;">
+        <iconify-icon icon="cil:object-ungroup" class="me-1" width="15"></iconify-icon>
+        <a class="text-decoration-none me-1" href="#" style="color: white; font-size: 12px;" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" >
+            LINE 1
+        </a>
+    </div>
+</div>
+<div>
+    <div class="rounded-3 me-2 px-3 py-2" style="background-color: #d5d5d5; color: black;">
+        <iconify-icon icon="cil:object-ungroup" class="me-1" width="15"></iconify-icon>
+        <a class="text-decoration-none me-1" style="color: black; font-size: 12px;" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            LINE 2
+        </a>
+    </div>
+</div>

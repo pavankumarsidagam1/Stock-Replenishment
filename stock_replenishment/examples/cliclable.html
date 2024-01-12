@@ -1,0 +1,120 @@
+$('#plantSelect').on('change', function(){
+    var plantId = $(this).val();
+
+    $.ajax({
+        type: 'POST',
+        url: 'fetchData.php',
+        data: { plantId: plantId, work : 4},
+        dataType: 'json',
+        success: function(data) {
+           console.log(data);
+            var footerLinesContainer = $('#footerLines');
+            footerLinesContainer.empty();
+
+            $.each(data, function(index, line) {
+                var lineItem = $('<div class="rounded-3 me-2 px-3 py-2 footerDiv clickable"></div>');
+                var lineIcon = $('<iconify-icon icon="cil:object-ungroup" class="me-1 footerIcon" width="15"></iconify-icon>');
+                var lineLink = $('<a class="text-decoration-none me-1 line-link footeranchor" href="#" role="button"></a>')
+                    .text(line.line_name)
+                    .attr('data-lineid', line.line_id);
+
+                lineItem.append(lineIcon, lineLink);
+                footerLinesContainer.append(lineItem);
+            });
+
+            // Assuming you also want to update the table body
+            var tableBody = $('#lineTableBody');
+            tableBody.empty();
+            $.each(data, function (index, line) {
+                var row = $('<tr class="clickable"></tr>');
+                var cell = $('<td class="clickable"></td>').text(line.line_name).attr('data-lineid', line.line_id);
+
+                row.append(cell);
+                tableBody.append(row);
+            });
+        },
+        error: function (error) {
+            console.error('Error:', error);
+        }
+    });
+});
+$('#footerLines, #lineTableBody').on('click', '.clickable', function () {
+    // Remove styles from previously clicked items
+    $('.footerDiv.clicked').removeClass('clicked');
+    $('.footeranchor.clicked').removeClass('clicked');
+    $('.footerIcon.clicked').removeClass('clicked');
+    $('.line-table .clicked').removeClass('clicked');
+
+    // Toggle styles for the clicked item
+    var lineId = $(this).data('lineid');
+    $(this).toggleClass('clicked');
+
+    // Toggle styles for footer lines
+    $('#footerLines .line-link[data-lineid="' + lineId + '"]').parent().toggleClass('clicked');
+    $('#footerLines .line-link[data-lineid="' + lineId + '"]').toggleClass('clicked');
+    $('#footerLines .footerIcon[data-lineid="' + lineId + '"]').toggleClass('clicked');
+});
+
+
+
+
+
+
+<!-- khbbbbbbbbbb -->
+
+
+$('#plantSelect').on('change', function(){
+    var plantId = $(this).val();
+
+    $.ajax({
+        type: 'POST',
+        url: 'fetchData.php',
+        data: { plantId: plantId, work : 4},
+        dataType: 'json',
+        success: function(data) {
+           console.log(data);
+            var footerLinesContainer = $('#footerLines');
+            footerLinesContainer.empty();
+
+            $.each(data, function(index, line) {
+                var lineItem = $('<div class="rounded-3 me-2 px-3 py-2 footerDiv"></div>');
+                var lineIcon = $('<iconify-icon icon="cil:object-ungroup" class="me-1 footerIcon" width="15"></iconify-icon>');
+                var lineLink = $('<a class="text-decoration-none me-1 line-link footeranchor" href="#" role="button"></a>')
+                    .text(line.line_name)
+                    .attr('data-lineid', line.line_id);
+
+                lineItem.append(lineIcon, lineLink);
+                footerLinesContainer.append(lineItem);
+            });
+
+            // Assuming you also want to update the table body
+            var tableBody = $('#lineTableBody');
+            tableBody.empty();
+            $.each(data, function (index, line) {
+            var row = $('<tr></tr>');
+            var cell = $('<td></td>').text(line.line_name).attr('data-lineid', line.line_id);
+
+            row.append(cell);
+            tableBody.append(row);
+        });
+        },
+        error: function (error) {
+            console.error('Error:', error);
+        }
+    });
+});
+$(document).on('click', '#footerLines .line-link, #lineTableBody td', function() {
+    // Remove styles from previously clicked items
+    $('.footerDiv.clicked').removeClass('clicked');
+    $('.footeranchor.clicked').removeClass('clicked');
+    $('.footerIcon.clicked').removeClass('clicked');
+    $('.line-table .clicked').removeClass('clicked');
+
+    // Toggle styles for the clicked item
+    var lineItem = $(this).parent();
+    lineItem.toggleClass('clicked');
+    lineItem.find('.footeranchor').toggleClass('clicked');
+    lineItem.find('.footerIcon').toggleClass('clicked');
+    var lineId = $(this).data('lineid');
+    $('.line-table [data-lineid="' + lineId + '"]').toggleClass('clicked');
+});
